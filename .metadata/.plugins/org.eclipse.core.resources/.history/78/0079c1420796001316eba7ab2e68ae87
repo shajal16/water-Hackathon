@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Android Splash Screen Timer</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_second">Second</string>
+    <string name="title_activity_third">Third</string>
+    <string name="title_activity_stack_over_flow">StackOverFlowActivity</string>
+    <string name="title_activity_cyclone">Cyclone</string>
+    <string name="title_activity_drought">Drought</string>
+    <string name="title_activity_erotion">Erotion</string>
+    <string name="title_activity_map">Map</string>
+    <string name="title_activity_weather">Weather</string>
+
+</resources>

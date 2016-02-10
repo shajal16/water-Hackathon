@@ -1,0 +1,196 @@
+package com.example.hellomap;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import android.content.Intent;
+import android.location.Criteria;
+import android.location.Location;
+import android.location.LocationManager;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+
+public class MainActivity extends FragmentActivity {
+
+	GoogleMap map;
+
+	LatLng start, end;
+	
+	LatLng latLng;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+
+		setContentView(R.layout.activity_main);
+		/*map = ((SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.map)).getMap();
+		// map.setMyLocationEnabled(true);
+		// map.setMapType(GoogleMap.MAP_TYPE_NONE);
+		/*
+		 * start = new LatLng(23.0000, 90.350); end = new LatLng(23.4000,
+		 * 90.650);
+		 
+
+		Intent in = getIntent();
+
+		int i = in.getIntExtra("tag", 1);
+
+		switch (i) {
+		case 1:
+
+			break;
+
+		case 2:
+			marker();
+			break;
+
+		case 3:
+			myLocation();
+			break;
+
+		case 4:
+			myLocation();
+			moveCamera();
+			break;
+
+		case 5:
+			multipleMarker();
+			break;
+
+		default:
+			break;
+		}
+		/*LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+		try {
+
+			Criteria criteria = new Criteria();
+
+			String provider = locationManager.getBestProvider(criteria, true);
+			Location myLocation = locationManager
+					.getLastKnownLocation(provider);
+
+			double latitude = myLocation.getLatitude();
+			double longitude = myLocation.getLongitude();
+
+			LatLng latLng = new LatLng(latitude, longitude);
+
+			map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.0f));
+
+			MarkerOptions marker = new MarkerOptions().position(latLng).title(
+					"My Loction");
+			map.addMarker(marker);
+
+			double latitude2 = 23.7776282;
+			double longitude2 = 90.405449;
+
+			LatLng latLng2 = new LatLng(latitude2, longitude2);
+
+			
+			 * nav = new Navigator(map,latLng,latLng2); nav.findDirections(true,
+			 * false); // nav.setMode(3, 0, 0); // nav.setPathColor(Color.CYAN,
+			 * 0, 0); nav.getDirections(); // nav.getDirections();
+			 
+			MarkerOptions marker2 = new MarkerOptions().position(latLng2)
+					.title("Mohakhai");
+			map.addMarker(marker2);
+
+		} catch (Exception e) {
+
+		}*/
+
+	}
+
+	/*
+	 * private boolean serviceOK() { int isAvailable = GooglePlayServicesUtil
+	 * .isGooglePlayServicesAvailable(this);
+	 * 
+	 * if (isAvailable == ConnectionResult.SUCCESS) { return true; } else if
+	 * (GooglePlayServicesUtil.isUserRecoverableError(isAvailable)) { Dialog d =
+	 * GooglePlayServicesUtil.getErrorDialog(isAvailable, this, 9001); d.show();
+	 * } else { Toast.makeText(getApplicationContext(),
+	 * "Cannot connected to Google Play Service", Toast.LENGTH_SHORT).show(); }
+	 * return false; }
+	 */
+
+	private void multipleMarker() {
+		
+		myLocation();
+		moveCamera();
+		double latitude2 = 23.7776282;
+		double longitude2 = 90.405449;
+
+		LatLng latLng2 = new LatLng(latitude2, longitude2);
+		
+		MarkerOptions marker2 = new MarkerOptions().position(latLng2)
+				.title("Mohakhai");
+		map.addMarker(marker2);
+		
+	}
+
+	private void moveCamera() {
+		
+		map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.0f));
+		
+	}
+
+	private void myLocation() {
+		LocationManager locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+		try {
+
+			Criteria criteria = new Criteria();
+
+			String provider = locationManager.getBestProvider(criteria, true);
+			Location myLocation = locationManager
+					.getLastKnownLocation(provider);
+
+			double latitude = myLocation.getLatitude();
+			double longitude = myLocation.getLongitude();
+
+			latLng = new LatLng(latitude, longitude);
+
+		//	map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13.0f));
+
+			MarkerOptions marker = new MarkerOptions().position(latLng).title(
+					"My Loction");
+			map.addMarker(marker);
+
+			/*double latitude2 = 23.7776282;
+			double longitude2 = 90.405449;
+
+			LatLng latLng2 = new LatLng(latitude2, longitude2);
+			 
+			MarkerOptions marker2 = new MarkerOptions().position(latLng2)
+					.title("Mohakhai");
+			map.addMarker(marker2);
+
+		} catch (Exception e) {
+
+		}
+		
+	}
+
+	private void marker() {
+		double latitude1 = 23.0000;
+		double longitude1 = 90.350;
+		LatLng latLng1 = new LatLng(latitude1, longitude1);
+		
+		MarkerOptions marker1 = new MarkerOptions().position(latLng1)
+				.title("Hello Dhaka");
+		map.addMarker(marker1);
+	}
+	*/
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+}

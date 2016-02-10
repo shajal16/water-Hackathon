@@ -1,0 +1,67 @@
+package info.androidhive.androidsplashscreentimer;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.Window;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import info.androidhive.androidsplashscreentimer.R;
+
+@SuppressLint("NewApi")
+public class Map extends Activity {
+  static final LatLng Loc1 = new LatLng(22.78638, 89.34);
+  static final LatLng Loc2 = new LatLng(22.23411, 89.30546);
+  static final LatLng Loc3 = new LatLng(22.53411, 89.30546);
+
+  
+  
+  private GoogleMap map;
+
+  @SuppressLint("NewApi")
+@Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+    setContentView(R.layout.activity_map);
+    map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map))
+        .getMap();
+    map.setMyLocationEnabled(true);
+    Marker loc1 = map.addMarker(new MarkerOptions().position(Loc1)
+        .title("A1"));
+    Marker loc2 = map.addMarker(new MarkerOptions().position(Loc2)
+            .title("A2"));
+
+          
+    Marker loc3 = map.addMarker(new MarkerOptions()
+        .position(Loc3)
+        .title("Snehangal School & College")
+        .snippet("Supply Levels: LOW")
+        .icon(BitmapDescriptorFactory
+            .fromResource(R.drawable.ic_launcher)));
+
+    // Move the camera instantly to hamburg with a zoom of 15.
+   
+     
+    map.moveCamera(CameraUpdateFactory.newLatLngZoom(Loc3, 60));
+    
+
+    // Zoom in, animating the camera.
+    map.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
+    
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main, menu);
+    return true;
+  }
+
+} 
